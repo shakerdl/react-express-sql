@@ -1,16 +1,20 @@
 const express = require("express");
 const app = express();
+app.use(express.json());
+const db = require("./models");
+const cars = require("./routes/Cars"); // here it's  make the cars variabel as a router object
+const users = require("./routes/Users");
 
-require("dotenv").config();
-let port = process.env.PORT;
-let host = process.env.HOST;
 
-app.use(express.json());  //handel all the incoming request looking  to say if there is json and convert it to object
+// app.use(sup);
+app.use("/Cars",cars);  
+// use the Cars.js file to handle 
+// endpoint that start with /Cars
 
-app.listen(port,host,(err)=> {
-   if (err) {
-       console.log('there is a problem',err);
-       return;
-   }
-   console.log(`server is lisiting ${host}:${port}`); // I have to use backticket
+app.use("/Users",users);  
+
+db.sequelize.sync().then(() => {
+  app.listen(3001, () => {
+    console.log("Server running on port 3001");
+  });
 });
