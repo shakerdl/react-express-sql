@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
 const db = require("./models");
 const cars = require("./routes/Cars"); // here it's  make the cars variabel as a router object
 const users = require("./routes/Users");
 
+app.use(express.json());
 
 // app.use(sup);
 app.use("/Cars",cars);  

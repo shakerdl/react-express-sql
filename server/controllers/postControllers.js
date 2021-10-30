@@ -1,5 +1,5 @@
 
-const Post = require('../models/Posts');
+const {Posts}  = require("../models/Posts");
 
 exports.getAllPosts = async (req,res,next) => {
     res.send("Get All posts route");
@@ -7,10 +7,9 @@ exports.getAllPosts = async (req,res,next) => {
 
 
 exports.createNewPost = async (req,res,next) => {
-    let post = new Post("First Post","body of first");
-    post = post.save();
-    console.log(post);
-    res.send("Create New Post Route");
+    const user = req.body;
+    const post = await Posts.create({user});
+res.json(post);
 };
 
 
