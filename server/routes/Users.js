@@ -16,7 +16,7 @@ router
 .route('/:id')
 .get(postControllers.getAllPosts); 
 
-router.route('/user/:id').get(postControllers.getAllPosts);
+router.route('/user/').get(postControllers.getAllPosts);
 
   router.route('/user/:id/edit').get(postControllers.getPostById);
   

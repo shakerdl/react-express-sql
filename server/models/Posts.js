@@ -1,6 +1,7 @@
+const { sequelize } = require(".");
 
-module.exports = (sequelize,DataTypes) => {
-  const Posts = sequelize.define("Users", {
+module.exports = (sequelize, DataTypes) => {
+  const users = sequelize.define("users", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -12,11 +13,9 @@ module.exports = (sequelize,DataTypes) => {
     sex: {
       type: DataTypes.STRING,
       allowNull: false,
-    }});
-    
-    (async () => {
-      await sequelize.sync({ force: true });
-      // Code here
-    })();
-  return Posts;
+    },
+  });
+
+  return users;
 };
+

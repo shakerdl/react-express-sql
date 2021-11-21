@@ -1,15 +1,18 @@
 
-const {Posts}  = require("../models/Posts");
+const { users } = require("../models");
 
 exports.getAllPosts = async (req,res,next) => {
-    res.send("Get All posts route");
+    const listOfUsers = await users.findAll();
+    res.json(listOfUsers);
 };
 
 
 exports.createNewPost = async (req,res,next) => {
-    const user = req.body;
-    const post = await Posts.create({user});
-res.json(post);
+  
+        const post = req.body;
+        await users.create(post);
+        res.json(post);
+
 };
 
 
